@@ -11,7 +11,7 @@ export const HeroSection = () => {
                     <h1 className='text-white mb-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold'>
                         <span className='text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-700'>Hello, I'm{" "}</span>
                         Jeremy</h1>
-                    <p className='text-[#ADB5BD] text-base sm:text-lg lg:text-xl mb-8'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni commodi dignissimos delectus.</p>
+                    <p className='text-[#ADB5BD] text-base sm:text-lg lg:text-xl mb-8'>Self-taught developer exploring every stack I can get my hands on.</p>
                     <div className="flex flex-row justify-center sm:justify-start gap-x-4">
                         {/* Primary Button */}
                         <button className="px-6 py-3 w-fit rounded-full bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 hover:from-cyan-500 hover:to-blue-800 text-white font-medium transition">
