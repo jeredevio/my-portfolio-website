@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 
-
 export const HeroSection = () => {
     return (
         <section className='w-full max-w-screen-xl mx-auto px-4 sm:px-8 md:px-12 py-4'>
@@ -31,10 +30,11 @@ export const HeroSection = () => {
                 <div className="col-span-5 place-self-center mt-8 lg:mt-0">
                     <div className="relative w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] rounded-full bg-[#1c1e20] translate-x-4 sm:translate-x-8">
                         <Image
-                            src="/images/hero-image.png"
+                            src="/images/home-avatar.png"
                             alt="hero"
                             height={300}
                             width={300}
+                            quality={100}
                             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                         />
                     </div>

@@ -35,6 +35,7 @@ export const AboutSection = () => {
                 <div className="flex justify-center lg:justify-start mt-16">
                     <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px]">
                         <Image
+                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                             src="/images/about-image_result.webp"
                             alt="about"
                             fill
