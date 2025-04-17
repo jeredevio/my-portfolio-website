@@ -13,9 +13,8 @@ import {
     SiGithub,
     SiNodedotjs,
     SiExpress,
-    SiMongodb,
+    SiMongodb,      
     SiPostgresql,
-    SiMysql,
 } from "react-icons/si";
 
 const SKILLS = [
@@ -33,8 +32,7 @@ const SKILLS = [
     { name: "Node.js", icon: <SiNodedotjs size={40} className="text-green-500" /> },
     { name: "Express", icon: <SiExpress size={40} className="text-gray-200" /> },
     { name: "MongoDB", icon: <SiMongodb size={40} className="text-green-400" /> },
-    { name: "PostgreSQL", icon: <SiPostgresql size={40} className="text-blue-500" /> },
-    { name: "MySQL", icon: <SiMysql size={40} className="text-blue-400" /> },
+    { name: "SQL", icon: <SiPostgresql size={40} className="text-blue-400" /> },
 ];
 
 export const SkillsContent = () => {

@@ -1,6 +1,7 @@
 import HeroSection from "./components/heroSection";
 import { Navbar } from "./components/navbar";
 import AboutSection from "./components/AboutSection";
+import ProjectsSection from "./components/ProjectsSection";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <HeroSection />
         <AboutSection />
+        <ProjectsSection />
       </div>
     </main>
   );
