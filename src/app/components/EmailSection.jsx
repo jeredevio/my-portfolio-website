@@ -8,7 +8,8 @@ import Image from 'next/image'
 export const EmailSection = () => {
     return (
         <section className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
-            <div className="flex flex-col">
+            <div className="bg-gradient-to-b from-cyan-400 via-sky-500 to-blue-700 rounded-full h-80 w-80 z-10 blur-2xl absolute top-4/4 md:top-2/4 md:left-4 transform -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
+            <div className="z-10">
                 <h5 className='text-xl font-bold text-white my-2'>Let's Connect</h5>
                 <p className='text-[#ADB7BE] mb-4 max-w-md'>
                     I'm currently looking for new opportunities, my inbox is always open.
@@ -28,17 +29,47 @@ export const EmailSection = () => {
             </div>
 
             <div className="w-full">
-                <form className='flex flex-col gap-4'>
-                    <label htmlFor='email' type='email' className='text-white block mb-2 text-sm font-medium'>
-                        Your Email
-                    </label>
-                    <input
-                        type='email'
-                        placeholder='jeremy@example.com'
-                        id='email'
-                        className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-white text-sm rounded-lg block w-full p-2.5'
-                        required
-                    />
+                <form className='flex flex-col'>
+                    <div className='mb-6'>
+                        <label htmlFor='email' type='email' className='text-white block mb-2 text-sm font-medium'>
+                            Your Email
+                        </label>
+                        <input
+                            type='email'
+                            placeholder='jeremy@example.com'
+                            id='email'
+                            className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-white text-sm rounded-lg block w-full p-2.5'
+                            required
+                        />
+                    </div>
+                    <div className='mb-6'>
+                        <label htmlFor='subject' className='text-white block mb-2 text-sm font-medium'>
+                            Subject
+                        </label>
+                        <input
+                            type='text'
+                            placeholder='Just say hi!'
+                            id='subject'
+                            className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-white text-sm rounded-lg block w-full p-2.5'
+                            required
+                        />
+                    </div>
+                    <div className='mb-6'>
+                        <label htmlFor='message' className='text-white block mb-2 text-sm font-medium'>
+                            Your Email
+                        </label>
+                        <textarea
+                            name='message'
+                            placeholder='What would you like to say?'
+                            id='message'
+                            className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-white text-sm rounded-lg block w-full p-2.5'
+                        />
+                    </div>
+                    <button
+                        type='submit'
+                        className='bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 transition text-white font-medium py-2.5 px-5 rounded-lg w-full'>
+                        Send Message
+                    </button>
                 </form>
             </div>
         </section>

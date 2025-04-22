@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export const HeroSection = () => {
     return (
-        <section className='w-full max-w-screen-xl mx-auto px-4 sm:px-8 md:px-12 py-4'>
+        <section className='w-full max-w-screen-xl mx-auto px-10 sm:px-8 md:px-12 py-4'>
             <div className='grid grid-cols-1 sm:grid-cols-12'>
                 <div className='col-span-7 place-self-center text-center sm:text-left'>
 
