@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-
+import Link from 'next/link'
 export const HeroSection = () => {
     return (
         <section className='w-full max-w-screen-xl mx-auto px-10 sm:px-8 md:px-12 py-4'>
@@ -14,7 +14,7 @@ export const HeroSection = () => {
                     <div className="flex flex-row justify-center sm:justify-start gap-x-4">
                         {/* Primary Button */}
                         <button className="px-6 py-3 w-fit rounded-full bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 hover:from-cyan-500 hover:to-blue-800 text-white font-medium transition">
-                            Hire Me
+                            <Link href="#contact">Hire Me</Link>
                         </button>
 
                         {/* Secondary Button */}

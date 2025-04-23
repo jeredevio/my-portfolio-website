@@ -1,4 +1,5 @@
-import React from 'react'
+'use client';
+import React, { useState } from 'react'
 import GithubIcon from '../../../public/images/github-icon.svg'
 import LinkedinIcon from '../../../public/images/linkedin-icon.svg'
 import { FaInstagram } from 'react-icons/fa'
@@ -6,8 +7,43 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const EmailSection = () => {
+
+    const [emailSubmitted, setEmailSubmitted] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = {
+            email: e.target.email.value,
+            subject: e.target.subject.value,
+            message: e.target.message.value,
+        }
+        const JSONdata = JSON.stringify(data);
+        const endpoint = '/api/send';
+
+        // Form the request for sending data to the server
+        const options = {
+            // The method is POST because we are sending data.
+            method: 'POST',
+            // Tell the server we are sending JSON.
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            // Body of the request is the JSON data.
+            body: JSONdata,
+        }
+
+        const response = await fetch(endpoint, options);
+        const resData = await response.json();
+
+        // Check if the email was sent successfully
+        if (response.status === 200) {
+            console.log('Email sent successfully');
+            setEmailSubmitted(true);
+        }
+    };
+
     return (
-        <section className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
+        <section id='contact' className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
             <div className="bg-gradient-to-b from-cyan-400 via-sky-500 to-blue-700 rounded-full h-80 w-80 z-10 blur-2xl absolute top-4/4 md:top-2/4 md:left-4 transform -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
             <div className="z-10">
                 <h5 className='text-xl font-bold text-white my-2'>Let's Connect</h5>
@@ -29,12 +65,13 @@ export const EmailSection = () => {
             </div>
 
             <div className="w-full">
-                <form className='flex flex-col'>
+                <form className='flex flex-col' onSubmit={handleSubmit}>
                     <div className='mb-6'>
                         <label htmlFor='email' type='email' className='text-white block mb-2 text-sm font-medium'>
                             Your Email
                         </label>
                         <input
+                            name='email'
                             type='email'
                             placeholder='jeremy@example.com'
                             id='email'
@@ -47,6 +84,7 @@ export const EmailSection = () => {
                             Subject
                         </label>
                         <input
+                            name='subject'
                             type='text'
                             placeholder='Just say hi!'
                             id='subject'
@@ -70,6 +108,14 @@ export const EmailSection = () => {
                         className='bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 transition text-white font-medium py-2.5 px-5 rounded-lg w-full'>
                         Send Message
                     </button>
+                    {
+                        // If the email was sent successfully, show a success message
+                        emailSubmitted && (
+                            <p className='text-green-500 text-sm mt-2'>
+                                Email sent successfully!
+                            </p>
+                        )
+                    }
                 </form>
             </div>
         </section>

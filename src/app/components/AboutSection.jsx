@@ -4,7 +4,7 @@ import React, { useState, useTransition } from 'react'
 import Image from 'next/image'
 import TabButton from './TabButton'
 import SkillsContent from './tabs/SkillsContent'
-import EducationalContent  from './tabs/EducationalContent'
+import EducationalContent from './tabs/EducationalContent'
 
 const TAB_DATA = [
     {
@@ -19,7 +19,7 @@ const TAB_DATA = [
     }
 ]
 
-export const AboutSection = () => {
+    const AboutSection = () => {
     const [tab, setTab] = useState('skills');
     const [isPending, startTransition] = useTransition();
 
