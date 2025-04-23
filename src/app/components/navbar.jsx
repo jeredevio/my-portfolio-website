@@ -50,7 +50,7 @@ export const Navbar = () => {
 
                 {/* Menu Mobile */}
                 <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-                    <MenuOverlay links={navLinks} />
+                    <MenuOverlay links={navLinks} setIsMenuOpen={setIsMenuOpen} />
                 </div>
             </div>
         </nav>

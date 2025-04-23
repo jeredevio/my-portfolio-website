@@ -9,36 +9,35 @@ import Image from 'next/image'
 export const EmailSection = () => {
 
     const [emailSubmitted, setEmailSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+
         const data = {
             email: e.target.email.value,
             subject: e.target.subject.value,
             message: e.target.message.value,
         }
-        const JSONdata = JSON.stringify(data);
-        const endpoint = '/api/send';
 
-        // Form the request for sending data to the server
-        const options = {
-            // The method is POST because we are sending data.
-            method: 'POST',
-            // Tell the server we are sending JSON.
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            // Body of the request is the JSON data.
-            body: JSONdata,
-        }
+        try {
+            const response = await fetch('/api/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
 
-        const response = await fetch(endpoint, options);
-        const resData = await response.json();
-
-        // Check if the email was sent successfully
-        if (response.status === 200) {
-            console.log('Email sent successfully');
-            setEmailSubmitted(true);
+            if (response.status === 200) {
+                setEmailSubmitted(true);
+                e.target.reset();
+            }
+        } catch (error) {
+            console.error('Erreur:', error);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -51,7 +50,7 @@ export const EmailSection = () => {
                     I'm currently looking for new opportunities, my inbox is always open.
                     Whether you have a question or just want to say hi, I'll try my best to answer your message!
                 </p>
-                <div className='socials flex flex-row gap-2 mt-4'>
+                <div className='socials flex flex-row gap-2 mt-4 mb-8'>
                     <Link href='https://github.com/jeredevio'>
                         <Image src={GithubIcon} alt='Github Icon' />
                     </Link>
@@ -64,7 +63,7 @@ export const EmailSection = () => {
                 </div>
             </div>
 
-            <div className="w-full">
+            <div className="w-full sm:px-12 p-2">
                 <form className='flex flex-col' onSubmit={handleSubmit}>
                     <div className='mb-6'>
                         <label htmlFor='email' type='email' className='text-white block mb-2 text-sm font-medium'>
@@ -105,17 +104,17 @@ export const EmailSection = () => {
                     </div>
                     <button
                         type='submit'
-                        className='bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 transition text-white font-medium py-2.5 px-5 rounded-lg w-full'>
-                        Send Message
+                        disabled={isSubmitting}
+                        className={`bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 transition text-white font-medium py-2.5 px-5 rounded-lg w-full cursor-pointer ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                            }`}
+                    >
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
                     </button>
-                    {
-                        // If the email was sent successfully, show a success message
-                        emailSubmitted && (
-                            <p className='text-green-500 text-sm mt-2'>
-                                Email sent successfully!
-                            </p>
-                        )
-                    }
+                    {emailSubmitted && (
+                        <p className='text-green-500 text-sm mt-2'>
+                            Email sent successfully!
+                        </p>
+                    )}
                 </form>
             </div>
         </section>
