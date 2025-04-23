@@ -27,8 +27,8 @@ export const HeroSection = () => {
 
 
                 </div>
-                <div className="col-span-5 place-self-center mt-8 lg:mt-0">
-                    <div className="relative w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] rounded-full bg-[#1c1e20] translate-x-4 sm:translate-x-8">
+                <div className="col-span-5 place-self-center mt-10 lg:mt-0">
+                    <div className="relative w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] rounded-full bg-[#1c1e20] sm:translate-x-8">
                         <Image
                             src="/images/home-avatar.png"
                             alt="hero"
